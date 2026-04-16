@@ -8,7 +8,7 @@ version = "1.0.0"
 description = "E-commerce de zapatos con chat IA - Taller Construcción 2 EAFIT"
 readme = "README.md"
 requires-python = ">=3.10"
-authors = [{ name = "Universidad EAFIT - Construcción 2" }]
+authors = [{ name = "Hever Andre Alfonso Jimenez", email = "haalfonsoj@eafit.edu.co" }]
 
 [tool.pytest.ini_options]
 minversion = "8.0"

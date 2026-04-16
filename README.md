@@ -292,7 +292,8 @@ huellas-paisas/
 
 ## Autor
 
-Proyecto académico — Universidad EAFIT, Taller de Construcción 2.
+**Hever Andre Alfonso Jimenez** — haalfonsoj@eafit.edu.co  
+Universidad EAFIT, Taller de Construcción 2.
 
 ---
 
