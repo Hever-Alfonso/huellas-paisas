@@ -26,10 +26,12 @@ def chat_service(product_repo, chat_repo, fake_ai) -> ChatService:
 
 
 class TestChatService:
+    """Tests del ``ChatService`` con un doble de IA determinista."""
 
     async def test_process_message_persiste_dos_mensajes(
         self, chat_service, chat_repo, sample_products, fake_ai
     ):
+        """Procesar un mensaje debe guardar el turno del usuario y del asistente."""
         request = ChatMessageRequestDTO(
             session_id="cliente_001",
             message="Busco tenis para correr",
@@ -46,6 +48,7 @@ class TestChatService:
     async def test_process_message_incluye_catalogo_al_llm(
         self, chat_service, sample_products, fake_ai
     ):
+        """El servicio debe pasar el catálogo completo al proveedor de IA."""
         request = ChatMessageRequestDTO(
             session_id="s1", message="hola"
         )
@@ -56,6 +59,7 @@ class TestChatService:
     async def test_process_message_mantiene_contexto_entre_turnos(
         self, chat_service, fake_ai
     ):
+        """En el segundo turno el contexto enviado al LLM debe incluir mensajes previos."""
         req1 = ChatMessageRequestDTO(session_id="s1", message="Hola")
         req2 = ChatMessageRequestDTO(session_id="s1", message="¿Y algo en 42?")
 
@@ -70,6 +74,7 @@ class TestChatService:
     async def test_process_message_aisla_sesiones(
         self, chat_service, chat_repo
     ):
+        """Mensajes de distintas sesiones no deben mezclarse entre sí."""
         await chat_service.process_message(
             ChatMessageRequestDTO(session_id="userA", message="Hola A")
         )
@@ -86,6 +91,7 @@ class TestChatService:
     async def test_process_message_envuelve_errores_del_llm(
         self, product_repo, chat_repo
     ):
+        """Un error lanzado por el proveedor de IA debe convertirse en ``ChatServiceError``."""
         class BrokenAI:
             async def generate_response(self, user_message, products, context):
                 raise RuntimeError("Gemini caído")
@@ -99,6 +105,7 @@ class TestChatService:
     def test_clear_session_history(
         self, chat_service, chat_repo, sample_products
     ):
+        """Limpiar el historial debe eliminar todos los mensajes de la sesión."""
         import asyncio
 
         asyncio.run(
@@ -113,6 +120,7 @@ class TestChatService:
     async def test_get_session_history_retorna_dtos(
         self, chat_service
     ):
+        """El historial debe retornar ``ChatHistoryDTO`` con el mensaje original."""
         await chat_service.process_message(
             ChatMessageRequestDTO(session_id="s1", message="Hola Santi")
         )
