@@ -5,4 +5,4 @@ dominio, aplicación e infraestructura.
 """
 
 __version__ = "1.0.0"
-__author__ = "Universidad EAFIT - Taller Construcción 2"
+__author__ = "Hever Andre Alfonso Jimenez"

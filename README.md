@@ -81,7 +81,7 @@ La tienda está ambientada en Medellín, Colombia: el catálogo mezcla marcas in
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/huellas-paisas.git
+git clone https://github.com/Hever-Alfonso/huellas-paisas.git
 cd huellas-paisas
 
 # 2. Crear y activar entorno virtual (macOS / Linux)
@@ -292,7 +292,8 @@ huellas-paisas/
 
 ## Autor
 
-Proyecto académico — Universidad EAFIT, Taller de Construcción 2.
+**Hever Andre Alfonso Jimenez** — haalfonsoj@eafit.edu.co  
+Universidad EAFIT, Taller de Construcción 2.
 
 ---
 
